@@ -1,0 +1,30 @@
+services:
+  ratelimiter:
+     build: .
+     ports:
+       - "8080:8080"
+     volumes:
+       - .:/app
+     depends_on:
+      - redis
+     networks:
+      - ratelimiter_network
+
+  redis: 
+    image: redis:7.0-alpine
+    restart: always
+    command: redis-server --save 20 1 --loglevel warning --requirepass redis-passw0rd
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+    networks:
+      - ratelimiter_network
+
+networks:
+  ratelimiter_network:
+    driver: bridge
+
+volumes:
+  redis:
+    driver: local
