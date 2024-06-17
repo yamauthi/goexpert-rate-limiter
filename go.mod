@@ -1,6 +1,6 @@
 module github.com/yamauthi/goexpert-rate-limiter
 
-go 1.21.1
+go 1.22.3
 
 require (
 	github.com/spf13/viper v1.18.2

@@ -8,10 +8,10 @@ import (
 	"time"
 
 	"github.com/redis/go-redis/v9"
-	"github.com/yamauthi/goexpert-rate-limiter/configs"
-	"github.com/yamauthi/goexpert-rate-limiter/database"
-	"github.com/yamauthi/goexpert-rate-limiter/limiter"
-	"github.com/yamauthi/goexpert-rate-limiter/web/middleware"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/configs"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/database"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/limiter"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/web/middleware"
 )
 
 func main() {

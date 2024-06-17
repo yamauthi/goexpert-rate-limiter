@@ -9,8 +9,8 @@ import (
 
 	"github.com/redis/go-redis/v9"
 	"github.com/stretchr/testify/suite"
-	"github.com/yamauthi/goexpert-rate-limiter/database"
-	"github.com/yamauthi/goexpert-rate-limiter/limiter"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/database"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/limiter"
 )
 
 type RedisLimiterRepositoryTestSuite struct {

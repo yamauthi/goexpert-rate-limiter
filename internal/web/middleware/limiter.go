@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/yamauthi/goexpert-rate-limiter/limiter"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/limiter"
 )
 
 type LimiterMiddleware struct {

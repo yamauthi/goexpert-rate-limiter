@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/redis/go-redis/v9"
-	"github.com/yamauthi/goexpert-rate-limiter/limiter"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/limiter"
 )
 
 const KEYSPACE_API_KEY = "apiKey"
