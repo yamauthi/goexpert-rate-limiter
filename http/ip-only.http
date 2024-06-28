@@ -1,0 +1,2 @@
+GET http://localhost:8080/ip
+// 3 Max Requests IP - After passing max limit, block by 3 seconds

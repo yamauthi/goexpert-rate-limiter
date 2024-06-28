@@ -1,6 +1,7 @@
 package limiter
 
 import (
+	"log"
 	"time"
 )
 
@@ -46,6 +47,8 @@ func (l *Limiter) checkClientRequests(clientID string, maxRequests int) (bool, e
 				client.CurrentRequests++
 				client.TTL = l.Config.RequestsLimitInterval
 				l.Repository.SaveClient(*client)
+
+				log.Printf("---------Client: %s | Requests Current/Max: %v/%v", clientID, client.CurrentRequests, maxRequests)
 				return true, nil
 			}
 
@@ -54,7 +57,7 @@ func (l *Limiter) checkClientRequests(clientID string, maxRequests int) (bool, e
 			client.TTL = l.Config.ClientBlockTime
 			l.Repository.SaveClient(*client)
 		}
-
+		log.Printf("---------Client: %s blocked for %v seconds", clientID, l.Config.ClientBlockTime)
 		return false, ErrMaxNumberRequestsReached
 	} else {
 		client = &Client{
@@ -64,6 +67,7 @@ func (l *Limiter) checkClientRequests(clientID string, maxRequests int) (bool, e
 			Blocked:         false,
 		}
 		l.Repository.SaveClient(*client)
+		log.Printf("---------Client: %s | Requests Current/Max: %v/%v", clientID, client.CurrentRequests, maxRequests)
 		return true, nil
 	}
 }

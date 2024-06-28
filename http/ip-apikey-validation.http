@@ -1,0 +1,3 @@
+GET http://localhost:8080/ip-apikey
+// API_KEY: goexpert-key
+// 3 Max Requests IP | 5 max Requests API Key - After passing max limit, block by 3 seconds

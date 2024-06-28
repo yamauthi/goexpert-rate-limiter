@@ -2,7 +2,9 @@ package middleware
 
 import (
 	"errors"
+	"log"
 	"net/http"
+	"strings"
 
 	"github.com/yamauthi/goexpert-rate-limiter/internal/limiter"
 )
@@ -22,6 +24,13 @@ func (m *LimiterMiddleware) Limit(next http.Handler) http.Handler {
 		apiKey := r.Header.Get("API_KEY")
 		clientIP := GetIP(r)
 		allowed, err := m.Limiter.AllowRequest(clientIP, apiKey)
+		log.Printf(
+			"IP: %s | ApiKey: %s | Req Allowed: %v | Config: %v (0 - IP Only | 1 - ApiKey Only | 2 - IP or API Key)\n\n",
+			clientIP,
+			apiKey,
+			allowed,
+			m.Limiter.Config.ClientCheckType,
+		)
 		if allowed {
 			next.ServeHTTP(w, r)
 			return
@@ -61,6 +70,11 @@ func GetIP(r *http.Request) string {
 	}
 	if ip == "" {
 		ip = r.RemoteAddr
+	}
+
+	i := strings.Index(ip, ":")
+	if i > -1 {
+		ip = ip[:i]
 	}
 	return ip
 }

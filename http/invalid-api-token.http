@@ -1,2 +1,2 @@
-GET localhost:8080
+GET http://localhost:8080/apikey
 API_KEY: invalid-api-token
