@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/suite"
-	"github.com/yamauthi/goexpert-rate-limiter/limiter"
+	"github.com/yamauthi/goexpert-rate-limiter/internal/limiter"
 )
 
 type MockLimiterRepository struct {

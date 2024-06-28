@@ -26,7 +26,10 @@ func main() {
 	})
 
 	repository := database.NewRedisLimiterRepository(context.Background(), redis)
-
+	repository.SaveApiKey(limiter.APIKey{
+		ID:          "goexpert-key",
+		MaxRequests: 5,
+	})
 	ratelimiter := limiter.NewLimiter(
 		limiter.LimiterConfig{
 			ClientCheckType:       conf.DefaultLimitType,

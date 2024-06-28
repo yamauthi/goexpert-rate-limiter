@@ -1,0 +1,3 @@
+GET localhost:8080
+API_KEY: goexpert-key
+// 5 max Requests set. Check cmd/main.go to change 
